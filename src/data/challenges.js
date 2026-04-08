@@ -31,7 +31,7 @@ export const challenges = [
     name: "Story Mode",
     difficulty: "Medium",
     points: 20,
-    question: "\"Our department systems have been locked.\\nA mysterious code was found in the server logs:\"\\nU2FsdGVkX19kZXB0we_are_the_department}\\n\\nOnly true students of this department can recover the final key.\\nDecode the message and uncover the identity.\\nSubmit the flag in format: CCE{we_are_the_department}",
+    question: "\"Our department systems have been locked.\\nA mysterious code was found in the server logs:\"\\nU2FsdGVkX19kZXB0{**_***_t**_d*********}\\n\\nOnly true students of this department can recover the final key.\\nDecode the message and uncover the identity.",
     hint: "Story Mode: Base64 decoding might help uncover the hidden string.",
     answer: "CCE{we_are_the_department}",
   },
