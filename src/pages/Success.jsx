@@ -87,7 +87,7 @@ function Success() {
             letterSpacing: '4px',
             textShadow: '0 0 15px rgba(16, 185, 129, 0.5)'
           }}>
-            CCE_WON
+            CCE_WE_ARE_ONE
           </div>
         </div>
 
