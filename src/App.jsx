@@ -46,13 +46,14 @@ function App() {
     localStorage.removeItem('cce_completedChallenges');
   };
 
-  // Determine the next active challenge (first uncompleted)
-  // If no challenges completed, active is 1.
-  const activeChallengeId = challenges.find(c => !completedChallenges.includes(c.id))?.id || null;
+  const unlockedChallengeIds = [1, 3];
+  if (completedChallenges.includes(1)) unlockedChallengeIds.push(2);
+  if (completedChallenges.includes(3)) unlockedChallengeIds.push(4);
+  if ([1, 2, 3, 4].every(id => completedChallenges.includes(id))) unlockedChallengeIds.push(5);
 
   return (
     <GameContext.Provider value={{
-      userName, loginUser, completedChallenges, completeChallenge, resetGame, activeChallengeId
+      userName, loginUser, completedChallenges, completeChallenge, resetGame, unlockedChallengeIds
     }}>
       <Router>
         <Routes>

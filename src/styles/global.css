@@ -3,8 +3,6 @@
   --primary-blue: #2563EB;
   --dark-blue: #1E3A8A;
   --accent-glow: #3B82F6;
-  --accent-pink: #EC4899;
-  --accent-purple: #8B5CF6;
   --text-primary: #0F172A;
   --text-secondary: #475569;
   --success-green: #10B981;
@@ -80,9 +78,17 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  padding-bottom: 4rem; /* Extra padding so bottom isn't hidden */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+    padding-bottom: 5rem;
+  }
 }
 
 /* Animations */

@@ -19,7 +19,7 @@ function generatePlaceholder(answer) {
 function Challenge() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { userName, completedChallenges, completeChallenge, activeChallengeId } = useContext(GameContext);
+  const { userName, completedChallenges, completeChallenge, unlockedChallengeIds } = useContext(GameContext);
   
   const [flagInput, setFlagInput] = useState('');
   const [error, setError] = useState(false);
@@ -30,7 +30,17 @@ function Challenge() {
   const challenge = challenges.find(c => c.id === challengeId);
   
   const isCompleted = completedChallenges.includes(challengeId);
-  const isActive = activeChallengeId === challengeId;
+  const isUnlocked = unlockedChallengeIds.includes(challengeId);
+  const isActive = isUnlocked && !isCompleted;
+
+  const getDifficultyColor = (difficulty) => {
+    switch (difficulty) {
+      case 'Easy': return { bg: '#D1FAE5', color: '#065F46' };
+      case 'Medium': return { bg: '#FEF3C7', color: '#92400E' };
+      case 'Hard': return { bg: '#FEE2E2', color: '#991B1B' };
+      default: return { bg: '#F1F5F9', color: '#475569' };
+    }
+  };
 
   useEffect(() => {
     if (!challenge) {
@@ -55,7 +65,7 @@ function Challenge() {
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#2563EB', '#EC4899', '#3B82F6', '#8B5CF6'] // Anime-ish vibrant colors
+        colors: ['#10B981', '#2563EB', '#34D399', '#3B82F6'] // Green and Blue vibrant colors
       });
 
       setTimeout(() => {
@@ -88,9 +98,26 @@ function Challenge() {
 
       <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
         <div className="card" style={{ marginBottom: '2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', borderBottom: '2px dashed var(--accent-pink)', paddingBottom: '1rem' }}>
-            <Sparkles size={28} color="var(--accent-pink)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', borderBottom: '2px dashed var(--success-green)', paddingBottom: '1rem', flexWrap: 'wrap' }}>
+            <Sparkles size={28} color="var(--success-green)" />
             <h2 style={{ margin: 0, color: 'var(--dark-blue)', fontSize: '1.75rem', fontFamily: '"Nunito", "Poppins", sans-serif', fontWeight: 800 }}>Episode {challenge.id}: {challenge.name}</h2>
+            
+            <div style={{ marginLeft: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ 
+                backgroundColor: getDifficultyColor(challenge.difficulty).bg, 
+                color: getDifficultyColor(challenge.difficulty).color, 
+                padding: '0.2rem 0.6rem', 
+                borderRadius: '6px', 
+                fontSize: '0.875rem', 
+                fontWeight: 800,
+                textTransform: 'uppercase'
+              }}>
+                {challenge.difficulty}
+              </span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: 800 }}>
+                {challenge.points} pts
+              </span>
+            </div>
             {isCompleted && !isSuccessing && (
               <span style={{ 
                 marginLeft: 'auto', 
@@ -107,16 +134,16 @@ function Challenge() {
           </div>
 
           <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 800 }}>QUEST OBJECTIVE:</h3>
-            <div className="terminal-text" style={{ borderColor: 'var(--accent-purple)' }}>
+            <h3 style={{ fontSize: '1rem', color: 'var(--primary-blue)', marginBottom: '0.5rem', fontWeight: 800 }}>QUEST OBJECTIVE:</h3>
+            <div className="terminal-text" style={{ borderColor: 'var(--primary-blue)' }}>
               {challenge.question.split('\\n').map((line, i) => (
                 <div key={i}>{line}</div>
               ))}
             </div>
             
-            <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: 'rgba(236, 72, 153, 0.05)', borderRadius: '8px', borderLeft: '4px solid var(--accent-pink)' }}>
+            <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: 'rgba(16, 185, 129, 0.05)', borderRadius: '8px', borderLeft: '4px solid var(--success-green)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <strong style={{ color: 'var(--accent-pink)' }}>Secret Intel:</strong>
+                <strong style={{ color: 'var(--success-green)' }}>Secret Intel:</strong>
                 <button 
                   onClick={() => setShowHint(!showHint)} 
                   style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.875rem' }}
@@ -155,8 +182,8 @@ function Challenge() {
               </button>
             </form>
           ) : (
-            <div className="fade-in" style={{ backgroundColor: 'rgba(236, 72, 153, 0.1)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', border: '2px dashed rgba(236, 72, 153, 0.5)' }}>
-              <p style={{ color: 'var(--accent-pink)', fontWeight: 800, fontSize: '1.25rem', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>
+            <div className="fade-in" style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', border: '2px dashed rgba(16, 185, 129, 0.5)' }}>
+              <p style={{ color: 'var(--success-green)', fontWeight: 800, fontSize: '1.25rem', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>
                 🎉 Quest Cleared! Level Up!
               </p>
               {isSuccessing && <p style={{ fontSize: '0.875rem', marginTop: '0.5rem', color: 'var(--text-secondary)' }}>Moving to next stage...</p>}

@@ -29,23 +29,23 @@ function Welcome() {
 
   return (
     <div className="app-container" style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <div className="card fade-in" style={{ maxWidth: '500px', width: '100%', textAlign: 'center', padding: '3rem 2rem', border: '2px solid var(--accent-purple)' }}>
+      <div className="card fade-in" style={{ maxWidth: '500px', width: '100%', textAlign: 'center', padding: '3rem 2rem', border: '2px solid var(--primary-blue)' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-          <div style={{ 
-            background: 'linear-gradient(135deg, var(--accent-pink), var(--accent-purple))', 
-            padding: '1.5rem', 
+          <div style={{
+            background: 'linear-gradient(135deg, var(--success-green), var(--primary-blue))',
+            padding: '1.5rem',
             borderRadius: '50%',
             boxShadow: 'var(--shadow-glow)'
           }}>
             <Sword size={48} color="white" />
           </div>
         </div>
-        
+
         <h1 style={{ fontSize: '2.25rem', marginBottom: '0.5rem', color: 'var(--dark-blue)', fontFamily: '"Nunito", "Poppins", sans-serif', fontWeight: 900 }}>
           CCE Cyber Quest
         </h1>
-        <p style={{ color: 'var(--accent-purple)', marginBottom: '2.5rem', fontSize: '1.1rem', fontWeight: 600 }}>
-          Unleash your inner hacker and prove your worth!
+        <p style={{ color: 'var(--primary-blue)', marginBottom: '2.5rem', fontSize: '1.1rem', fontWeight: 600 }}>
+          Only the strongest minds can break the code… are you one of them?
         </p>
 
         {!showInput ? (
@@ -55,12 +55,12 @@ function Welcome() {
         ) : (
           <form className="fade-in" onSubmit={handleStart} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div className="input-group" style={{ textAlign: 'left' }}>
-              <label htmlFor="name" className="input-label" style={{ color: 'var(--accent-purple)' }}>Enter your Hero Name</label>
-              <input 
-                type="text" 
+              <label htmlFor="name" className="input-label" style={{ color: 'var(--primary-blue)' }}>Enter your Hero Name</label>
+              <input
+                type="text"
                 id="name"
-                className="input-field anime-input" 
-                placeholder="e.g., Kirito" 
+                className="input-field anime-input"
+                placeholder="e.g., Kirito"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 autoFocus

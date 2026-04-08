@@ -24,8 +24,8 @@ function Success() {
       }
 
       const particleCount = 50 * (timeLeft / duration);
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#EC4899', '#3B82F6'] }));
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }, colors: ['#8B5CF6', '#2563EB'] }));
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#10B981', '#3B82F6'] }));
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }, colors: ['#34D399', '#2563EB'] }));
     }, 250);
 
     return () => clearInterval(interval);
@@ -44,16 +44,16 @@ function Success() {
         textAlign: 'center', 
         padding: '4rem 2rem',
         boxShadow: 'var(--shadow-glow-strong)',
-        border: '3px solid var(--accent-pink)',
+        border: '3px solid var(--success-green)',
         animation: 'pulse-glow 3s infinite',
-        background: 'linear-gradient(to bottom, #ffffff, #fdf2f8)'
+        background: 'linear-gradient(to bottom, #ffffff, #f0fdfa)'
       }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
           <div style={{ 
-            background: 'linear-gradient(135deg, var(--accent-pink), var(--accent-purple))', 
+            background: 'linear-gradient(135deg, var(--success-green), var(--primary-blue))', 
             padding: '1.5rem', 
             borderRadius: '50%',
-            boxShadow: '0 0 30px rgba(236, 72, 153, 0.8)'
+            boxShadow: '0 0 30px rgba(16, 185, 129, 0.8)'
           }}>
             <Crown size={64} color="white" />
           </div>
@@ -63,7 +63,7 @@ function Success() {
           Victory!
         </h1>
         
-        <p style={{ color: 'var(--accent-purple)', marginBottom: '2.5rem', fontSize: '1.25rem', lineHeight: '1.6', fontWeight: 700 }}>
+        <p style={{ color: 'var(--primary-blue)', marginBottom: '2.5rem', fontSize: '1.25rem', lineHeight: '1.6', fontWeight: 700 }}>
           Legendary Hero <strong>{userName}</strong>, you have conquered the digital realm and sealed the ancient breach. Your power is unrivaled!
         </p>
 
@@ -72,20 +72,20 @@ function Success() {
           padding: '2rem', 
           borderRadius: '16px',
           marginBottom: '3rem',
-          border: '2px dashed var(--accent-pink)',
+          border: '2px dashed var(--success-green)',
           position: 'relative',
           overflow: 'hidden'
         }}>
-          <p style={{ color: 'var(--accent-purple)', fontSize: '1rem', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>
+          <p style={{ color: 'var(--primary-blue)', fontSize: '1rem', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>
             Master Key Unlocked
           </p>
           <div style={{ 
             fontFamily: '"Courier New", monospace', 
             fontSize: '3rem', 
             fontWeight: 900, 
-            color: 'var(--accent-pink)',
+            color: 'var(--success-green)',
             letterSpacing: '4px',
-            textShadow: '0 0 15px rgba(236, 72, 153, 0.5)'
+            textShadow: '0 0 15px rgba(16, 185, 129, 0.5)'
           }}>
             CCE_WON
           </div>
@@ -93,8 +93,8 @@ function Success() {
 
         <button className="btn anime-btn" onClick={handleRestart} style={{ 
           background: 'transparent',
-          color: 'var(--accent-purple)',
-          border: '2px solid var(--accent-purple)',
+          color: 'var(--primary-blue)',
+          border: '2px solid var(--primary-blue)',
           padding: '1rem 3rem',
           fontSize: '1.1rem'
         }}>
